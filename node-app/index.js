@@ -5,6 +5,9 @@ var jwt = require('jsonwebtoken');
 const multer = require('multer')
 const productController = require('./controllers/productController');
 const userController = require('./controllers/userController');
+const dotenv =  require('dotenv');
+
+dotenv.config();
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -28,7 +31,7 @@ const port = 4000
 const mongoose = require('mongoose');
 // mongoose.connect('')
 
-const dbURL = 'mongodb://127.0.0.1:27017/cumtree';
+const dbURL = process.env.MONGO_URL ?? 'mongodb://127.0.0.1:27017/cumtree';
 mongoose.connect(dbURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
