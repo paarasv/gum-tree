@@ -3,15 +3,15 @@ const cors = require('cors')
 const path = require('path');
 var jwt = require('jsonwebtoken');
 const multer = require('multer')
-const productController = require('./controllers/productController');
-const userController = require('./controllers/userController');
+const productController = require('../controllers/productController');
+const userController = require('../controllers/userController');
 const dotenv =  require('dotenv');
 
 dotenv.config();
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads')
+        cb(null, '../uploads')
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
@@ -27,7 +27,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const port = 4000
+const port = 3000
 const mongoose = require('mongoose');
 // mongoose.connect('')
 
